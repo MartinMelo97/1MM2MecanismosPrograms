@@ -15,6 +15,31 @@ y2 = h*(beta2/beta2);
 y3 = h*(((285-beta3)/90)-((1/(2*pi))*sin(2*pi*((285-beta3)/90))));
 y4 = 0*beta4;
 
+beta1com = 0:45;
+beta2com = 45:195;
+beta3com = 195:285;
+beta4com = 285:360;
+
+y1la = h*((beta1com/45)-((1/(2*pi))*sin(2*pi*(beta1com/45))));
+y2la = h*(beta2com/beta2com);
+y3la = h*(((285-beta3com)/90)-((1/(2*pi))*sin(2*pi*((285-beta3com)/90))));
+y4la = 0*beta4com;
+
+for i = 0:45
+    r(i+1) = Rb + y1la(i+1);
+    disp(r+1)
+end
+for i = 45:195
+    r(i+1) = Rb + y2la;
+end
+for i=195:285
+    r(i+1) = Rb + y3la(i+1-195);
+end
+for i=285:360
+    r(i+1) = Rb + y4la(i+1-285);
+end
+nosealv = 0:360;
+
 figure
 plot(beta1,y1), hold on
 plot(beta2,y2), hold on
@@ -23,6 +48,7 @@ plot(beta4,y4)
 xlim([0 360])
 ylim([-0.01 1.6])
 
-for i = 1:45
-    r(i+1) = Rb + y1;
+figure
+for i = 0:360
+    plot(r*cos(i)
 end
